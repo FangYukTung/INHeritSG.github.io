@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="INHerit-SG: Incremental Hierarchical Semantic Scene Graphs with RAG-Style Retrieval">
+        content="INHerit-SG: Incremental Hierarchical Semantic Scene Graphs for Complex Embodied Retrieval">
   <meta name="keywords" content="Scene Graph, Robotics, SLAM, Semantic Understanding">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>INHerit-SG</title>
+  <title>INHerit-SG: Incremental Hierarchical Semantic Scene Graphs for Complex Embodied Retrieval</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -32,7 +32,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">INHerit-SG: Incremental Hierarchical Semantic Scene Graphs with RAG-Style Retrieval</h1>
+          <h1 class="title is-1 publication-title">INHerit-SG: Incremental Hierarchical Semantic Scene Graphs for Complex Embodied Retrieval</h1>
           
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -93,15 +93,15 @@
                 </a>
               </span>
 
-              <!-- Dataset and Eval Link. -->
+              <!-- Dataset and evaluation release pending. -->
               <span class="link-block">
-                <a href="https://github.com/FangYukTung/HM3DSem-SQR"
-                   class="external-link button is-normal is-rounded is-dark">
+                <button type="button" disabled
+                        class="button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-database"></i>
                   </span>
-                  <span>Dataset & Eval</span>
-                </a>
+                  <span>Dataset &amp; Eval (Coming Soon)</span>
+                </button>
               </span>
 
               <!-- Code Link. -->
@@ -139,11 +139,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Driven by advancements in foundation models, semantic scene graphs have emerged as as a prominent paradigm for high-level 3D environmental abstraction in robot navigation. However, existing approaches are fundamentally misaligned with the needs of embodied tasks. As they rely on either offline batch processing or implicit feature embeddings, the maps can hardly support interpretable human-intent reasoning in complex environments. To address these limitations, we present INHerit-SG.
-          </p>
-          <p>
-            We redefine the map as a structured, RAG-ready knowledge base where natural-language descriptions are introduced as explicit semantic anchors to better align with human intent. 
-            An asynchronous dual-process architecture, together with a Floor-Room-Area-Object hierachy, decouples geometric segmentation from time-consuming semantic reasoning. An event-triggered map update mechanism reorganizes the graph only when meaningful semantic events occur. This strategy enables our graph to maintain long-term consistency with relatively low computational overhead. For retrieval, we deploy multi-role Large Language Models (LLMs) to decompose queries into atomic constraints and handle logical negations, and employ a hard-to-soft filtering strategy to ensure robust reasoning. This explicit interpretability improves the success rate and reliability of complex retrievals, enabling the system to adapt to a broader spectrum of human interaction tasks. We evaluate INHerit-SG on a newly constructed dataset, HM3DSem-SQR, and in real-world environments. Experiments demonstrate that our system achieves state-of-the-art performance on complex queries, and reveal its scalability for downstream navigation tasks.
+            Object retrieval in 3D scenes remains difficult when queries combine hierarchical context, attributes, negation, and chained spatial relations. Existing semantic maps, scene graphs, and agentic memory support open-vocabulary retrieval, but jointly resolving these constraints remains challenging. In this work, we propose INHerit-SG, an incremental hierarchical semantic scene graph with an accompanying retrieval method for complex embodied retrieval. Asynchronous geometric and semantic processing and structural event-driven maintenance organize observations into a hierarchy whose node semantics and spatial relations are recorded as natural language text. The same memory supports direct reading and reasoning by more capable language models or query parsing followed by structured retrieval. Controlled comparisons show that direct reading is more accurate with powerful hosted models, while structured retrieval improves the accuracy of smaller local models and lowers per-query API cost for hosted models. We also construct HM3DSem-SQR, containing 6,084 queries from 36 HM3D-Sem scenes, and evaluate on Main-864, a class-balanced subset spanning all 36 scenes, and in three real-world environments. Experiments show that INHerit-SG outperforms the strongest baselines in both simulator and real-world evaluations. The largest gains come on attribute and compositional queries (7.6 and 6.3 strict Top-1 points on Main-864), with a 9.8-point overall success margin on real robots.
           </p>
         </div>
       </div>
@@ -158,9 +154,10 @@
     
     <!-- Overview Part -->
     <div class="content has-text-centered">
-      <img src="web_material/Teaser.png" alt="Method Overview" style="width: 80%;">
+      <!-- Replace Teaser.png with Figure 1 from main_paper_9.15.pdf. -->
+      <img src="web_material/Teaser.png" alt="Figure 1: Incrementally maintained hierarchical scene graph for complex object retrieval" style="width: 80%;">
       <p>
-        <strong>INHerit-SG Overview.</strong> Our system build a hierarchical semantic memory during online exploration and operate closed-loop retrieval. <strong>(Left)</strong> The hierarchical scene graph of a real-world office building built through incremental mapping. <strong>(Right)</strong> The robot parses a complex query into structural constraints and follows the retrieval pipeline to complete the task sequentially.
+        <strong>Figure 1.</strong> INHerit-SG builds an incrementally maintained hierarchical scene graph for complex object retrieval.
       </p>
     </div>
     
@@ -168,12 +165,10 @@
 
     <!-- Pipeline Part -->
     <div class="content has-text-centered">
-      <img src="web_material/pipeline.png" alt="Method Pipeline" style="width: 80%;">
+      <!-- Replace pipeline.png with Figure 2 from main_paper_9.15.pdf. -->
+      <img src="web_material/pipeline.png" alt="Figure 2: Incremental hierarchical mapping and structured retrieval in INHerit-SG" style="width: 80%;">
       <p>
-        <strong>The INHerit-SG Framework.</strong> The system bridges real-time mapping with logic-aware retrieval. 
-        <strong>(Left)</strong> The pipeline employs a dual-stream architecture to balance tracking and reasoning. A <em>Event-Triggered Map</em> module (top-left) optimizes topological updates based on VLM decisions, while the <em>Incremental Association</em> block (bottom-left) fuses SAM3/DINOv3 features to instantiate nodes. 
-        <strong>(Center)</strong> The resulting data structure is a multi-level scene graph that explicitly models topological relationships. 
-        <strong>(Right)</strong> Complex queries are decomposed by <em>Multi-role LLMs</em> into specific constraints, including negation and weights. The system ranks candidates using a scoring function and executes a final VLM <em>Verification</em> step to ensure precise intent grounding.
+        <strong>Figure 2.</strong> Overview of incremental hierarchical mapping and structured retrieval in INHerit-SG.
       </p>
     </div>
 
@@ -186,6 +181,7 @@
     <div class="hero-body">
       <h2 class="title is-3 has-text-centered">Video Demo</h2>
       <video id="teaser-video" autoplay muted loop playsinline height="100%" controls>
+        <!-- Replace demo_video.mp4 with the updated demonstration video. -->
         <source src="web_material/demo_video.mp4" type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">

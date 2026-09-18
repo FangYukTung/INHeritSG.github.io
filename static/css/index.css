@@ -8,9 +8,12 @@ body {
     color: #000;
 }
 
-.link-block a {
+.link-block .button {
     margin-top: 5px;
     margin-bottom: 5px;
+    font-family: inherit;
+    height: 2.5em;
+    vertical-align: middle;
 }
 
 .dnerf {

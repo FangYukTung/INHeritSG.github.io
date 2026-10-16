@@ -70,9 +70,14 @@ body {
 
 .achievement-kicker {
   color: #80631f;
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   font-weight: 800;
   letter-spacing: 0.08em;
+}
+
+.achievement-separator {
+  color: #b08a38;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 480px) {

@@ -54,7 +54,7 @@ body {
   border-radius: 999px;
   background: linear-gradient(110deg, #fff9e8, #fff3d6);
   color: #574015;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .achievement-banner a {
@@ -70,20 +70,23 @@ body {
 
 .achievement-kicker {
   color: #80631f;
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .achievement-separator {
   color: #b08a38;
-  font-size: 1.1rem;
 }
 
 @media (max-width: 480px) {
   .achievement-banner {
     border-radius: 16px;
     gap: 7px 10px;
+  }
+
+  .achievement-banner,
+  .achievement-kicker,
+  .achievement-banner a {
     font-size: 0.85rem;
   }
 }

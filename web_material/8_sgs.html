@@ -16,6 +16,11 @@
     (function() {
         var graphDiv = document.getElementsByClassName('plotly-graph-div')[0];
         var isRotating = true;
+
+        window.addEventListener('wheel', function(event) {
+            event.preventDefault();
+            window.parent.scrollBy({top: event.deltaY, left: event.deltaX, behavior: 'auto'});
+        }, {passive: false});
         
         var checkExist = setInterval(function() {
            if (graphDiv && graphDiv._fullLayout && graphDiv._fullLayout.scene) {

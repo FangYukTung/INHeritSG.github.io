@@ -40,6 +40,49 @@ body {
   margin-left: -10px;
 }
 
+.achievement-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 1.25rem;
+  padding: 9px 14px;
+  border: 1px solid #f1d48a;
+  border-radius: 999px;
+  background: linear-gradient(110deg, #fff9e8, #fff3d6);
+  color: #574015;
+  font-size: 0.95rem;
+}
+
+.achievement-banner a {
+  color: #704b00;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.achievement-banner a:hover {
+  color: #9a6500;
+  text-decoration: underline;
+}
+
+.achievement-kicker {
+  color: #80631f;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 480px) {
+  .achievement-banner {
+    border-radius: 16px;
+    gap: 7px 10px;
+    font-size: 0.85rem;
+  }
+}
+
 .publication-title {
 }
 

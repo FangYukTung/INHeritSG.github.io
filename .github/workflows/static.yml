@@ -32,6 +32,13 @@ jobs:
         with:
           fetch-depth: 0  # 确保获取完整历史，对静态站点可能有帮助
 
+      - name: Download original-quality demo video
+        run: |
+          curl --fail --location --retry 3 \
+            --output web_material/demo_video_original.mp4 \
+            https://github.com/FangYukTung/INHeritSG.github.io/releases/download/demo-video-original-2026-10-18/inheritsg-demo-video-faststart.mp4
+          echo 'e61a2ce63e355994d99369796a4e24f8d3463a312416cd12f179b8ae27cfa719  web_material/demo_video_original.mp4' | sha256sum --check
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
         # 移除显式的 token 参数，使用默认的 GITHUB_TOKEN
